@@ -124,17 +124,6 @@
   var2u=new((/dimsizes(plev),l_1,l_2/),float)
   var2v=new((/dimsizes(plev),l_1,l_2/),float)
 
-;;; OLD and slow method fori converting wind from irregular grid to regular (rectilinear) grids.  
-
-;   outfile = addfile("CTRL_MB.nc","c")
-;   outfile->var2d = var2d
-
-;  u_grid = rcm2rgrid(lat2d,lon2d,u2,lat,lon,0) 
-;  v_grid = rcm2rgrid(lat2d,lon2d,v2,lat,lon,0) 
-;  q_grid = rcm2rgrid(lat2d,lon2d,Q,lat,lon,0)
-;  printVarSummary(u_grid) 
-;  printVarSummary(v_grid) 
-
 ;;; Perform verticle intregration over pressure levels
 
   do jj=0,dimsizes(plev)-1
@@ -179,7 +168,6 @@
   NY = dim_UV(0)
   
 
-;  DIV = new((/699,639/),float)
 
 ;;;; Create divergence variable
 
@@ -187,26 +175,6 @@
 
   begTime = get_cpu_time()
 
-;;; OLD and SLOW method
- 
-;  do xx=0,NX-2
-;  do yy=0,NY-2
-;     MM = Mfx(yy,xx)*Mfy(yy,xx) 
-;     DVDY = ( V1(yy+1,xx)/Mfy(yy+1,xx) - V1(yy,xx)/Mfy(yy,xx) )/DX*MM   
-;     DUDX = ( U1(yy,xx+1)/Mfx(yy,xx+1) - U1(yy,xx)/Mfx(yy,xx) )/DX*MM 
-;     DIV(yy,xx) = DUDX + DVDY
-;     delete(MM)
-;     delete(DUDX)
-;     delete(DVDY)  
-;  end do
-;  end do
-
-; printVarSummary(U1)
-; printVarSummary(V1)
-; printVarSummary(lat)
-; printVarSummary(lon)
-
-;;;; Built in NCL function for calculate divergence
 
   DIV_NCL = uv2dv_cfd (U1,V1,lat,lon, 2)
 
@@ -214,8 +182,6 @@
 
   delete(begTime)
 
-;  mflux(it,:,:)=DIV
-;  delete(DIV) 
  
   mflux(it,:,:)=DIV_NCL
   delete(DIV_NCL)
@@ -252,27 +218,10 @@
   delete(INDIR)   
 
 
-;  mflux_ncl!0 = "Times"
-;  mflux_ncl!1 = "lat"
-;  mflux_ncl!2 = "lon"
-
-;  mflux_ncl&Times = Times
-;  mflux_ncl&lat = lat
-;  mflux_ncl&lon = lon
-
-;  mflux_ncl@Name = "Integated Horizontal Moisture Flux NCL"
-
-;  ncdf->mflux_ncl  = mflux_ncl
-
-;  delete(mflux_ncl)
-
 
   end do  ; days
   end do  ; months
   
-;  cdb = "cd ../"
-;  systemfunc(cdb)
-
   end do  ;  years
   end
   
