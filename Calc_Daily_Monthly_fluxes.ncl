@@ -7,7 +7,7 @@ begin
 INDIR="../"
 
 yr_start=2001
-yr_end = 2002
+yr_end = 2013
 
 do year_opt = yr_start,yr_end,1
 
