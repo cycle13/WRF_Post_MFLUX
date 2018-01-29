@@ -20,9 +20,9 @@ Using WRF 3 hourly 2D surface variables (PRECIP, LH, SMOIS, SROFF,UDROFF) the bu
 
 The MFC has calculated using the following formula:
 
-[!MFC EQ1](http://latex.codecogs.com/gif.latex?MFC%20%3D%20-%5Cbigtriangledown.%28QV_%7Bh%7D%29%20%3D%20-V_%7Bh%7D.%5Cbigtriangledown%7BQ%7D%20-%20Q%5Cbigtriangledown.V_%7Bh%7D%2C)
+![MFC EQ1](http://latex.codecogs.com/gif.latex?MFC%20%3D%20-%5Cbigtriangledown.%28QV_%7Bh%7D%29%20%3D%20-V_%7Bh%7D.%5Cbigtriangledown%7BQ%7D%20-%20Q%5Cbigtriangledown.V_%7Bh%7D%2C)
 
-[!MFC EQ2](http://latex.codecogs.com/gif.latex?MFC%20%3D%20%5Cunderset%7Badvection%7D%7B%5Cunderbrace%7B%7D%7B-u%5Cfrac%7B%5Cpartial%20Q%7D%7B%5Cpartial%20x%7D%20-v%5Cfrac%7B%5Cpartial%20Q%7D%7B%5Cpartial%20y%7D%20%7D%7D%20-%20Q%5Cleft%20%28%20%5Cunderset%7Bconvergence%7D%7B%5Cunderbrace%7B%7D%7B%5Cfrac%7B%5Cpartial%20u%7D%7B%5Cpartial%20x%7D%20&plus;%5Cfrac%7B%5Cpartial%20v%7D%7B%5Cpartial%20y%7D%20%7D%7D%20%5Cright%20%29)
+![MFC EQ2](http://latex.codecogs.com/gif.latex?MFC%20%3D%20%5Cunderset%7Badvection%7D%7B%5Cunderbrace%7B%7D%7B-u%5Cfrac%7B%5Cpartial%20Q%7D%7B%5Cpartial%20x%7D%20-v%5Cfrac%7B%5Cpartial%20Q%7D%7B%5Cpartial%20y%7D%20%7D%7D%20-%20Q%5Cleft%20%28%20%5Cunderset%7Bconvergence%7D%7B%5Cunderbrace%7B%7D%7B%5Cfrac%7B%5Cpartial%20u%7D%7B%5Cpartial%20x%7D%20&plus;%5Cfrac%7B%5Cpartial%20v%7D%7B%5Cpartial%20y%7D%20%7D%7D%20%5Cright%20%29)
 
 The file "Calc_Daily_Monthly_fluxes.ncl" calculates Daily and Monthly average values of moisture convergence/divenrgence fluxes obtained by running "Calc_Moisture_FLux.ncl" NCL code.
 
